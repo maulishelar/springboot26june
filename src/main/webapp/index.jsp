@@ -113,38 +113,96 @@
 		}
 	});
 </script>
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+h2 {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.text {
+ 
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+</style>
 </head>
 <body ng-app="Employeedata" ng-controller="employee">
 	<h2>Employee Records</h2>
 
 	<form ng-submit="submitData()">
-		<input type="text" ng-model="EmployeeForm.eid"
+	
+		<input type="text" class="text" ng-model="EmployeeForm.eid"
 			placeholder="Employee Id" ng-keyup="searchdata(false)"> <input type="text"
-			ng-model="EmployeeForm.name" placeholder="Employee Name"> <input
-			type="text" ng-model="EmployeeForm.email"
-			placeholder="Employee Email"> <input type="submit" value="Db">
+			class="text" ng-model="EmployeeForm.name" placeholder="Employee Name"> <input
+			type="text" class="text" ng-model="EmployeeForm.email"
+			placeholder="Employee Email"> <input class="button" type="submit" value="Db">
+
 	</form>
 
 	<form ng-submit="searchdata(true)">
-		<input type="text" ng-model="EmployeeForm1.eid"
+		<input type="text" class="text" ng-model="EmployeeForm1.eid"
 			placeholder="Employee Id">
-			<input type="submit" value="Search"/>
+			<input type="submit" class="button" value="Search"/>
 		
 	</form>
-	<table border="1">
+	<table id="customers">
 		<tr>
-			<th style="text-align: center">E_ID</th>
+			<th style="text-align: center">Employee Id</th>
 			<th style="text-align: center">Name</th>
-			<th style="text-align: center">EMail</th>
-			<th>Operation</th>
+			<th style="text-align: center">Email</th>
+			<th style="text-align: center">Operation</th>
 		</tr>
 		<tr ng-repeat="E in Employee" style="padding: 10px">
-			<td>{{ E.eid }}</td>
-			<td>{{ E.name }}</td>
-			<td>{{ E.email }}</td>
-			<td>
-				<button ng-click="editdata(E)">EDIT</button> |
-				<button ng-click="deletedata(E)">DELETE</button>
+			<td style="text-align: center">{{ E.eid }}</td>
+			<td style="text-align: center">{{ E.name }}</td>
+			<td style="text-align: center">{{ E.email }}</td>
+			<td style="text-align: center">
+				<button ng-click="editdata(E)" class="button">EDIT</button> |
+				<button ng-click="deletedata(E)" class="button">DELETE</button>
 			</td>
 		</tr>
 	</table>
